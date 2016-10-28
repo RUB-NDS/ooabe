@@ -1,0 +1,181 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */
+options {
+  
+  LOOKAHEAD = 2;
+  CHOICE_AMBIGUITY_CHECK = 1;
+  OTHER_AMBIGUITY_CHECK = 1;
+  STATIC = false;
+  DEBUG_PARSER = false;
+  DEBUG_LOOKAHEAD = false;
+  DEBUG_TOKEN_MANAGER = false;
+  ERROR_REPORTING = true;
+  JAVA_UNICODE_ESCAPE = false;
+  UNICODE_INPUT = false;
+  IGNORE_CASE = false;
+  USER_TOKEN_MANAGER = false;
+  USER_CHAR_STREAM = false;
+  BUILD_PARSER = true;
+  BUILD_TOKEN_MANAGER = true;
+  SANITY_CHECK = true;
+  FORCE_LA_CHECK = true;
+}
+
+
+PARSER_BEGIN(Form2Tree)
+package com.example.ooabe.parsers.f2t;
+import java.io.*;
+import java.util.*;
+//this class is strongly coupled with class BNode and ANDORTree
+import com.example.ooabe.utils.tree.*;
+
+
+public class Form2Tree
+{
+    /** Main entry point. */
+
+  public BNode rootNode=new BNode();
+
+    
+  public static void main(String args[]) throws ParseException {
+
+
+    System.out.println("Please enter a boolean formula, ended with \";\" ");
+//    call the simplest constructor for testing
+//    FormulaParserExt parser = new FormulaParserExt(System.in);
+    Scanner sc=new Scanner(System.in);
+    String expr = sc.nextLine();
+    // test another constructor for better interfacing    
+   Form2Tree parser = new Form2Tree((Reader)(new StringReader(expr))); 
+    System.out.println(parser.Start(parser.rootNode));
+    System.out.println("Transformation ends.");
+  }
+}
+
+PARSER_END(Form2Tree)
+
+SKIP :
+{
+  " "
+| "\t"
+}
+
+/* OP, '+' for OR, '*' for AND , 
+TERM , Strings for attribute name.
+These are all the symbols from which terminal symbols are directly derived.
+Spaces and Tabs are ignored.
+*/
+TOKEN:{<OP :["*" , "+"]>}
+TOKEN:{<TERM: <LETTER>(<LD>)* >}
+TOKEN:{<#LETTER:["a"-"z","A"-"Z"]>}
+TOKEN:{<#LD:["a"-"z","A"-"Z","0"-"9"]>}
+
+/** Root production. */
+String Start(BNode node) :
+{
+  String s=new String("Start");
+}
+{
+  s= BFormula(node) ";"
+  {
+    return s;
+  }
+  
+  
+}
+
+
+/* Deriviation Rules,  LL(2) Grammar    */
+String BFormula(BNode node):
+{
+  String s;
+  Token t;
+}
+{
+    
+    s=Clause(node)
+    {
+        return s+"$";
+    }
+    
+    |
+    t=<TERM>
+    {
+      s=t.image;
+    }
+    {
+      node.category = (byte)0x02;
+      node.Attribute = t.image;
+      return s+"$";
+    }
+}
+
+String Clause(BNode node) :
+{String s="",s1="",s2="";
+Token t1;
+Token op1;
+BNode lc = new BNode();
+BNode rc = new BNode();
+
+}
+{
+    
+    t1=<TERM>
+    op1=<OP>
+    s1 = ExpanClause(rc)
+    {
+      if(op1.image.equals("*"))
+        node.category=(byte)0x00;
+      else if (op1.image.equals("+"))
+        node.category=(byte)0x01;
+        
+      node.addLC(lc);
+      node.addRC(rc);
+      
+      lc.category = (byte)0x02;  
+      lc.Attribute = t1.image;
+      
+      s=t1.image+"$" + s1+"$" + op1 ;
+      return s;
+    }
+    
+    |
+    "(" s1=Clause(lc) ")" op1=<OP> s2=ExpanClause(rc)
+    {
+      if(op1.image.equals("*"))
+        node.category=(byte)0x00;
+      else if (op1.image.equals("+"))
+        node.category=(byte)0x01;
+
+      node.addLC(lc);
+      node.addRC(rc);
+        
+      s=s1 +"$" + s2 +"$" + op1;
+      return s;
+    }
+}
+
+
+String ExpanClause(BNode node):
+{
+  String s, s1;
+  Token t;
+
+}
+{
+    t=<TERM>
+    {
+      node.category=(byte)0x02;
+      node.Attribute=t.image;
+      return t.image;
+    }
+    |
+    "(" s=Clause(node) ")"
+    {
+      return s;
+    }
+    
+}
+
+

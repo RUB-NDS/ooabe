@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">OOABE</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_test_pairing_actibity">Test Pairing Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_basic_abetest">BasicABETestActivity</string>
+
+    <!-- title and button strings used in various test fragments -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_set_up">Generate parameters </string>
+    <string name="title_encryption_test">Test encryption</string>
+    <string name = "title_decryption_test">Test decryption</string>
+    <string name = "title_key_gen_test">Test USK generation</string>
+
+    <!-- hints used in various test fragments -->
+    <string name="set_up_text">Please enter the security level
+        for generating public parameters and public keys.
+        (Note: Use 128 only when running this program on high-end devices)</string>
+    <string name="num_attr_hint">Please enter the number of attributes (\u003c 31) </string>
+    <string name="offline_hint">Check this box if you want to
+        test the online-offline feature of encryption </string>
+</resources>
