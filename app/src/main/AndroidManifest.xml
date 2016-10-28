@@ -32,13 +32,18 @@
             android:label="@string/title_activity_set_up"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".EncryptionTestActivity"
             android:label="@string/title_encryption_test"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
+
+        <activity
+            android:name=".DecryptionTestActivity"
+            android:label="@string/title_decryption_test"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

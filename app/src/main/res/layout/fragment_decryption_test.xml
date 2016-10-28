@@ -2,19 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ooabe.EncryptionTestFragment">
+    tools:context="com.example.ooabe.DecryptionTestFragment">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <CheckBox
-            android:text="@string/offline_hint"
+        <TextView
+            android:text="@string/usk_dec_hit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/check_on_off"
-            android:checked="false" />
+            android:id="@+id/dec_description" />
 
         <EditText
             android:layout_width="match_parent"
@@ -25,10 +24,10 @@
             android:hint="@string/num_attr_hint" />
 
         <Button
-            android:text="start testing encryption"
+            android:text="start user key generation and decryption test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_test_enc" />
+            android:id="@+id/button_test_dec" />
 
         <Button
             android:text="clear result"
@@ -39,6 +38,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/result_enc" />
+            android:id="@+id/result_dec" />
+
     </LinearLayout>
+
 </FrameLayout>

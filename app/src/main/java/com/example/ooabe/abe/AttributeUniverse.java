@@ -4,11 +4,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.CipherParameters;
-import org.bouncycastle.crypto.InvalidCipherTextException;
-
-import it.unisa.dia.gas.jpbc.*;
+import it.unisa.dia.gas.jpbc.Field;
 
 /**
  * This AttributeUniverse class is used to 
@@ -23,17 +19,17 @@ public class AttributeUniverse
 	public Field Zp;
 	HashMap<String, BigInteger> StrHash2ZP;
 	HashMap<BigInteger, String> ZPHash2Str;
-	ArrayList<String> ListOfAttributes;
+	ArrayList<String> ListOfAttributeNames;
 	
-	public AttributeUniverse(Field Zp, ArrayList<String> ListOfAttributes)
+	public AttributeUniverse(Field Zp, ArrayList<String> ListOfAttributeNames)
 	{
 //		for every attribute in the list, randomly pick up an integer in Zp
 //		make sure the mapping is a bijection
 		this.Zp = Zp;
 		this.StrHash2ZP = new HashMap<String, BigInteger>();
 		this.ZPHash2Str = new HashMap<BigInteger, String>();
-		this.ListOfAttributes = new ArrayList<String>();
-		for(String s: ListOfAttributes)
+		this.ListOfAttributeNames = new ArrayList<String>();
+		for(String s: ListOfAttributeNames)
 		{
 			this.addNewAttribute(s);
 		}
@@ -49,7 +45,7 @@ public class AttributeUniverse
 		}
 		else
 		{
-			ListOfAttributes.add(newAttribute);
+			ListOfAttributeNames.add(newAttribute);
 			do
 			{
 				value = this.Zp.newRandomElement().toBigInteger();
@@ -69,7 +65,7 @@ public class AttributeUniverse
 		}
 		else
 		{
-			ListOfAttributes.add(newAttribute);
+			ListOfAttributeNames.add(newAttribute);
 			do
 			{
 				value = this.Zp.newRandomElement().toBigInteger();
@@ -84,7 +80,7 @@ public class AttributeUniverse
 	
 	public void updateAttribute(String attribute)
 	{
-		if(this.ListOfAttributes.contains(attribute))
+		if(this.ListOfAttributeNames.contains(attribute))
 		{
 			this.ZPHash2Str.remove(this.StrHash2ZP.get(attribute));
 			this.StrHash2ZP.remove(attribute);
@@ -96,7 +92,7 @@ public class AttributeUniverse
 	
 	public void removeAttribute(String attribute)
 	{
-		this.ListOfAttributes.remove(attribute);
+		this.ListOfAttributeNames.remove(attribute);
 		this.ZPHash2Str.remove(this.StrHash2ZP.get(attribute));
 		this.StrHash2ZP.remove(attribute);
 	}

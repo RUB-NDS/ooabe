@@ -38,22 +38,21 @@ public class PWABE extends RABE{
 	 * @return a UserPrivateKey object for (UID, side)
 	 */
 	
-	@Override
-	public UserSecretKey genUSK(String UID, 
-			KeyPolicy policy) throws Exception
-	{
-		throw new Exception("PWABE.genUSK(String UID,"+ 
-			"KeyPolicy policy): Please call UserPrivateKey genUSK(String UID, "
-			+ "BigInteger uidImage, KeyPolicy policy, boolean side) ");
-		
-	}
+//	@Override
+//	public UserSecretKey genUSK(String UID,
+//			KeyPolicy policy) throws Exception
+//	{
+//		throw new Exception("PWABE.genUSK(String UID,"+
+//			"KeyPolicy policy): Please call UserPrivateKey genUSK(String UID, "
+//			+ "BigInteger uidImage, KeyPolicy policy, boolean side) ");
+//
+//	}
 	
 
 	
 	public UserSecretKey genUSK(String UID, BigInteger uidImage, 
 			KeyPolicy policy, boolean side)
 	{
-//		TODO: check if uidImage in Zp
 		if(side)
 		{
 //			BigInteger uidImage = this.getZp().newRandomElement().toBigInteger();

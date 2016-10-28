@@ -13,7 +13,6 @@ public class BNode {
 	public BNode leftChild;
 	public BNode rightChild;
 	public BNode parent;
-//	public boolean visited = false;
 	
 	
 	public BNode()

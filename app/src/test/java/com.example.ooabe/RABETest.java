@@ -1,22 +1,23 @@
 package com.example.ooabe;
 
-import static org.junit.Assert.*;
+import com.example.ooabe.abe.AttributeUniverse;
+import com.example.ooabe.abe.CipherText;
+import com.example.ooabe.abe.KeyPolicy;
+import com.example.ooabe.abe.RABE;
+import com.example.ooabe.abe.UserSecretKey;
+import com.example.ooabe.utils.tree.PolicyTree;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.example.ooabe.abe.AttributeUniverse;
-import com.example.ooabe.abe.CipherText;
-import com.example.ooabe.abe.KeyPolicy;
-import com.example.ooabe.abe.RABE;
-import com.example.ooabe.abe.UserSecretKey;
 import it.unisa.dia.gas.jpbc.Element;
-import com.example.ooabe.utils.tree.PolicyTree;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class RABETest {
@@ -90,7 +91,7 @@ public class RABETest {
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

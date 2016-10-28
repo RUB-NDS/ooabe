@@ -1,4 +1,4 @@
-package com.example.ooabe.ABETest;
+package com.example.ooabe.abeTestContent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Helper class for providing sample content for user interfaces created by
+ * Helper class for providing sample/default content for user interfaces created by
  * Android template wizards.
- * <p/>
- * TODO: Replace all uses of this class before publishing your app.
+ * Modified from the template
+ * Contain all the item names listed in MainActivity
  */
 public class ABETestContent {
 
@@ -24,46 +24,31 @@ public class ABETestContent {
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
     public static final Map<String, Integer> ActionNumber = new HashMap<String, Integer>();
 
-//    private static final int COUNT = 25;
+    public static final String introText =
+    "Welcome to the test GUI of online-offline attribute-based encryption schemes.\n" +
+            "To start the test, such as encryption and decryption, you may first need to go into \"Generate PP and PK\" in the start page.\n" +
+            "If you're using a smart phone you may need to hit the back button to return to the start page.\n" +
+            "Have fun :)";
+
 
     public static DummyItem GeneratePK = new DummyItem("1", "Generate PP and PK","");
     public static DummyItem EncTest = new DummyItem("2", "Test Encryption","");
-//    public static DummyItem OOEncTest = new DummyItem("3", "Test Online/Offline Encryption","");
-    public static DummyItem DecTest = new DummyItem("3", "Test Decryption","");
-//    public static DummyItem FileLoadTest = new DummyItem("5", "Test File Up/Download","");
+    public static DummyItem DecTest = new DummyItem("3", "Test uskGen and Decryption","");
+    public static DummyItem Introduction = new DummyItem("4", "Introduction",introText);
+
     static
     {
         addItem(GeneratePK);
         addItem(EncTest);
-//        addItem(OOEncTest);
         addItem(DecTest);
-//        addItem(FileLoadTest);
+        addItem(Introduction);
     }
 
-//    static {
-//        // Add some sample items.
-//        for (int i = 1; i <= COUNT; i++) {
-//            addItem(createDummyItem(i));
-//        }
-//    }
-//
     private static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-//    private static DummyItem createDummyItem(int position) {
-//        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-//    }
-
-//    private static String makeDetails(int position) {
-//        StringBuilder builder = new StringBuilder();
-//        builder.append("Details about Item: ").append(position);
-//        for (int i = 0; i < position; i++) {
-//            builder.append("\nMore details information here.");
-//        }
-//        return builder.toString();
-//    }
 
     /**
      * A dummy item representing a piece of content.

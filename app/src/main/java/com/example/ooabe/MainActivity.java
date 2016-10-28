@@ -2,24 +2,20 @@ package com.example.ooabe;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
-
-import com.example.ooabe.ABETest.ABETestContent;
+import com.example.ooabe.abe.AttributeUniverse;
+import com.example.ooabe.abe.CipherText;
 import com.example.ooabe.abe.RSABE;
+import com.example.ooabe.abeTestContent.ABETestContent;
 
 import java.util.List;
 
@@ -41,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static RSABE myRSABE;
     public static int security_level = 0;
+    public static AttributeUniverse U;
+    public static CipherText CT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +70,6 @@ public class MainActivity extends AppCompatActivity {
             mTwoPane = true;
         }
     }
-
-
-//    @Override
-//    public void OnFragmentInteraction(Uri uri) {
-//
-//    }
 
 
 
@@ -131,13 +123,24 @@ public class MainActivity extends AppCompatActivity {
                                         .commit();
                                 break;
                             }
+
+                            case 2:
+                            {
+                                DecryptionTestFragment decFragment = new DecryptionTestFragment();
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.item_detail_container, decFragment)
+                                        .commit();
+                                break;
+
+                            }
+
                             default:
                             {
                                 Bundle arguments = new Bundle();
                                 arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);
                                 ItemDetailFragment fragment = new ItemDetailFragment();
                                 fragment.setArguments(arguments);
-    //                        modify this part to change behavior when item gets clicked
+//                                the default behavior is to show the introduction text
                                 getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.item_detail_container, fragment)
                                         .commit();
@@ -157,9 +160,16 @@ public class MainActivity extends AppCompatActivity {
                             case 1:
                                 intent = new Intent(context, EncryptionTestActivity.class);
                                 break;
-                            default:
-                                intent = new Intent(context, SetUpActivity.class);
+                            case 2:
+                                intent = new Intent(context, DecryptionTestActivity.class);
                                 break;
+                            default:
+                            {
+//                                the default behavior is to show the introduction text
+                                intent = new Intent(context, ItemDetailActivity.class);
+                                intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                                break;
+                            }
                         }
 
                         context.startActivity(intent);

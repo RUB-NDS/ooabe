@@ -1,14 +1,12 @@
 package com.example.ooabe;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -119,6 +117,8 @@ public class SetUpFragment extends Fragment {
         myRSABE = null;
         MainActivity.myRSABE = myRSABE;
         MainActivity.security_level = 0;
+        MainActivity.U = null;
+        MainActivity.CT = null;
         result.setText("All public parameter and public key has been cleared");
 
     }
@@ -140,7 +140,8 @@ public class SetUpFragment extends Fragment {
             if(null != myRSABE)
             {
                 result.setText("Setup has already been executed before. Hit \"RESET \" to clear them" +
-                        "if new tests for different parameters are wanted.");
+                        "if new tests for different parameters are wanted " +
+                        "or continue with other test with current security parameters");
                 return;
             }
 
@@ -211,18 +212,3 @@ public class SetUpFragment extends Fragment {
     }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
-//}

@@ -1,23 +1,23 @@
 package com.example.ooabe;
 
-import static org.junit.Assert.*;
+import com.example.ooabe.abe.AttributeUniverse;
+import com.example.ooabe.abe.KeyPolicy;
+import com.example.ooabe.abe.KeyUpdate;
+import com.example.ooabe.abe.RSABE;
+import com.example.ooabe.abe.RSCipherText;
+import com.example.ooabe.abe.UserSecretKey;
+import com.example.ooabe.utils.tree.PolicyTree;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.example.ooabe.abe.AttributeUniverse;
-import com.example.ooabe.abe.KeyPolicy;
-import com.example.ooabe.abe.KeyUpdate;
-import com.example.ooabe.abe.PWABE;
-import com.example.ooabe.abe.RSABE;
-import com.example.ooabe.abe.RSCipherText;
-import com.example.ooabe.abe.UserSecretKey;
 import it.unisa.dia.gas.jpbc.Element;
-import com.example.ooabe.utils.tree.PolicyTree;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class RSABETest {
@@ -124,32 +124,10 @@ public class RSABETest {
 				
 			}
 			
-//			now generate the list of time-attribute lists		
-//			listOf_TimeAttributesList = new ArrayList<ArrayList<BigInteger>>();
-//			listOf_TimeAttributesList.add(new ArrayList<BigInteger>());
-//			ArrayList<BigInteger> timeAttributelist = new ArrayList<BigInteger>();
-//			
-//			for(String leafCode : timeCodes)
-//			{
-//				for(String nodeCode: RSABE.getTt(leafCode, T_MAX_LOG2))
-//				{
-//					
-//				}
-//			}
-
-		//	
-//			timeAttributelist.add(U2.getImageOf(
-//					attrName));
-//			listOf_TimeAttributesList.add(timeAttributelist);
-//			timeAttributelist = new ArrayList<BigInteger>();
-//			timeAttributelist = new ArrayList<BigInteger>();
-			
 //			use the enhanced version for policy generation
 			myPolicy2 = pt.toKeyPolicy(U2,true);
 			myPolicy2.printPolicy();
 			uid2Image = myABE2.getZp().newRandomElement().toBigInteger();
-//			BigInteger uid2Image = (new BigInteger("2")).add(myABE2.getMSK());
-			usk_uid2 = myABE2.genUSK("uid2",uid2Image,myPolicy2); 
 			
 			keyUpdatePolicies = new ArrayList<KeyPolicy>();
 			for(String aPolicyStr: timePolicyStrList)
@@ -163,34 +141,7 @@ public class RSABETest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-
 	}
-	
-	
-//	@Test
-//	public void testPolicyStringGenration() {
-//		int i = 0;
-//		for(String aPolicyStr: timePolicyStrList)
-//		{
-//			System.out.println("Key policy for time "+i+":"+aPolicyStr);
-//			i++;
-//		}
-//	}
-//	
-//	
-//	@Test
-//	public void testPolicyGenration() {
-//		int i = 0;
-//		for(KeyPolicy policy: keyUpdatePolicies)
-//		{
-//			System.out.print("Key policy for time "+i+":");
-//			policy.printPolicy();
-//			System.out.println();
-//			i++;
-//		}
-//	}
 	
 	@Test
 	public void testDelegationDec()
