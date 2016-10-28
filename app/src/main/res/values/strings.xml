@@ -9,7 +9,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_set_up">Generate parameters </string>
     <string name="title_encryption_test">Test encryption</string>
-    <string name = "title_decryption_test">Test decryption</string>
+    <string name = "title_decryption_test">Test decryption with varied input</string>
     <string name = "title_key_gen_test">Test USK generation</string>
 
     <!-- hints used in various test fragments -->
