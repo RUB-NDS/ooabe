@@ -4,7 +4,7 @@ This project includes:
 + the extension of RABE to pair-wise KP-ABE, using idea in (2) (https://github.com/RUB-NDS/ooabe/blob/beta1/app/src/main/java/com/example/ooabe/abe/PWABE.java )
 + the extension of PWABE to revocable storage KP-ABE using idea in (2) (https://github.com/RUB-NDS/ooabe/blob/beta1/app/src/main/java/com/example/ooabe/abe/RSABE.java )
 + JUnit test cases for RABE, PWABE, RSABE (https://github.com/RUB-NDS/ooabe/tree/beta1/app/src/test/java/com.example.ooabe)
-+ Test GUI runnable on Android devices with API level 17+ (inclusive).This GUI is the runnable generated from whole Android project.
++ Test GUI for Android devices with API level 17+ (inclusive).This GUI is the runnable generated from whole Android project.
 
 After being cloned and upzipped , this project can be directly imported into Android Studio (V2.2.2+)
 

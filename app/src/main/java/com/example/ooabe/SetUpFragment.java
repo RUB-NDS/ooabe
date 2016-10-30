@@ -141,7 +141,7 @@ public class SetUpFragment extends Fragment {
             {
                 result.setText("Setup has already been executed before. Hit \"RESET \" to clear them" +
                         "if new tests for different parameters are wanted " +
-                        "or continue with other test with current security parameters");
+                        "or continue with other test with current security level = "+ MainActivity.security_level);
                 return;
             }
 
