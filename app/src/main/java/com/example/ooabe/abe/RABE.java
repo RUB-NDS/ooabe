@@ -280,17 +280,6 @@ public class RABE
 	public ArrayList<Integer> getWi(KeyPolicy policy, ArrayList<BigInteger> attributes)
 	{
 		ArrayList<Integer> Wi = new ArrayList<Integer>();
-		if(null == policy.formulaArrayList || policy.formulaArrayList.size()<1)
-		{
-//			if the policy is "raw", go for linear equation solving
-//			(1,1,1, ...) as the default returning value
-//			TODO: solve LES
-			for(int  i = 0; i < policy.getM().size(); i++)
-			{
-				Wi.add(new Integer(1));
-			}
-			return Wi;
-		}
 
 //		use the SAT-oracle (here, the evalBooleanFormula() method) 
 //		to select a minimum sized solution
